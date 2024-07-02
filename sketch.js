@@ -1,6 +1,6 @@
 let speaker = new p5.Speech(); // speech synthesis object
-speaker.utterance.onend = speechEnded;
-speaker.utterance.onstart = speechStart;
+speaker.onEnd = speechEnded;
+speaker.onStart = speechStart;
 speaker.setRate(0.5);
 
 let letterElement = document.getElementById("letter");
@@ -18,10 +18,13 @@ var myBackgroundColor = '#e9c0e5';
 let count = 1, countScale = 1, topLimit = 800, bottomLimit = 0;
 
 
-
+window.addEventListener("load", (event) => {
+  // console.log("Page Is Fully Loaded!");
+  speaker.speak(""); 
+  getArticleList();
+});
 
 function setup() {
-  getArticleList();
   // console.log("Set Up Finnished!");
 }
 
